@@ -41,7 +41,7 @@ class IsPleasantValidator:
         if linked_habit is not None and reward is not None:
             raise ValidationError('Невозможен одновременный выбор связанной привычки и указания вознаграждения.')
         if linked_habit is not None:
-            linked_habit = Habit.objects.filter(pk=linked_habit.pk, is_pleasant=True)
+            linked_habit_obj = Habit.objects.filter(pk=linked_habit.pk, is_pleasant=True)
             if len(linked_habit_obj) == 0:
                 raise ValidationError(
                     'В связанные привычки могут попадать только привычки с признаком приятной привычки.')
